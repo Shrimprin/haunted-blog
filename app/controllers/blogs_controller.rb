@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
     @blogs = Blog.search(params[:term]).published.default_order
   end
 
-  def show;
+  def show
     redirect_to request.referer || root_path if @blog.secret && @blog.user != current_user
   end
 
