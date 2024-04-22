@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    redirect_to request.referer || root_path if @blog.secret && @blog.user != current_user
+    raise ActiveRecord::RecordNotFound if @blog.secret && @blog.user != current_user
   end
 
   def new
